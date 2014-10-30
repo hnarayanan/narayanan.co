@@ -1,7 +1,7 @@
 server {
   server_name www.narayanan.co;
   listen *:80;
-  return 301 http://narayanan.com$request_uri;
+  return 301 http://narayanan.co$request_uri;
 }
 
 server {
