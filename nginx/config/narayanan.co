@@ -9,6 +9,7 @@ server {
   listen *:80;
   access_log /home/ubuntu/sites/narayanan.co/nginx/logs/access.log;
   error_log /home/ubuntu/sites/narayanan.co/nginx/logs/error.log;
+  client_max_body_size 30M;
   location / {
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header HOST $http_host;
