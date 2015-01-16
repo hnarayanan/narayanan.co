@@ -1,0 +1,38 @@
+1. Make sure whatever changes to the casper submodule are committed into the ‘customized’ branch
+
+    cd content/themes/casper/
+    git branch
+    git status
+
+2. Merge changes in this submodule from upstream master
+
+    git checkout master
+    git pull
+    git checkout customized
+    git merge master
+    (If resolving merge conflicts, do so and)
+    git commit -m "Merge with upstream master"
+    (git push github customized)
+   
+3. Make sure the parent repository points to this new submodule commit hash
+
+    cd ../../..
+    git add content/themes/casper
+    git commit -m "Point to new theme submodule" content/themes/casper
+
+4. Update the parent respository
+
+    git pull upstream stable
+    (git push)
+
+5. Reinstall potentially updated requirements
+
+    npm install
+    (This doesn’t echo output to screen for some reason so don’t panic. Also, if this fails as it often does, remove the node_modules folder and retry.)
+    grunt init
+    (If this fails as it often does, remove the bower_components folder and retry.)
+    grunt prod
+
+6. Restart the server
+   forever stop index.js
+   NODE_ENV=production forever start index.js
