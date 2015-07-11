@@ -1,0 +1,19 @@
+1. Stop the live website
+
+    cd ~/sites/narayanan.co
+    forever stop index.js
+
+2. Backup the database to a local computer
+
+    cd ~/Sites/personal/narayanan.co/content/data
+    scp -Cr ubuntu@thinkbot.net:~/sites/narayanan.co/content/data/ghost.db .
+
+3. Backup the image files to a local computer
+
+    cd content/themes/casper/
+    rsync -aPvhe ssh --delete  --exclude-from=/Users/harish/Scratch/Backup/exclude2 ubuntu@narayanan.co:/home/ubuntu/sites/narayanan.co/content/images /Users/harish/Sites/personal/narayanan.co/content/
+
+4. Restart the live website
+
+    cd ../..
+    NODE_ENV=production forever start index.js

@@ -12,8 +12,8 @@
     git merge master
     (If resolving merge conflicts, do so and)
     git commit -m "Merge with upstream master"
-    (git push github customized)
-   
+    git push github customized
+
 3. Make sure the parent repository points to this new submodule commit hash
 
     cd ../../..
@@ -23,14 +23,15 @@
 4. Update the parent respository
 
     git pull upstream stable
-    (git push)
+    git push
 
 5. Reinstall potentially updated requirements
 
+    (rm -fr node_modules)
     npm install
-    (This doesn’t echo output to screen for some reason so don’t panic. Also, if this fails as it often does, remove the node_modules folder and retry.)
+    (This doesn’t echo output to screen for some reason so don’t panic.)
+    (rm -fr bower_components)
     grunt init
-    (If this fails as it often does, remove the bower_components folder and retry.)
     grunt prod
 
 6. Restart the server
