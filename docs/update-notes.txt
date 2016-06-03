@@ -30,7 +30,7 @@
     (rm -fr node_modules)
     npm install
     (This doesn’t echo output to screen for some reason so don’t panic.)
-    (rm -fr bower_components)
+    (rm -fr core/built/*)
     grunt init
     grunt prod
 
